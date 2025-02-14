@@ -31,22 +31,22 @@ class DatabaseHelper {
   }
 
   static Future<int> insert(UserModel userModel) async {
-    await _database!.insert(tableName, userModel.toJson());
+    return await _database!.insert(tableName, userModel.toJson());
   }
 
   static Future<int> delete(UserModel userModel) async {
-    await _database!.delete(tableName, where: "id = ?", whereArgs: [userModel.id]);
+    return await _database!.delete(tableName, where: "id = ?", whereArgs: [userModel.id]);
   }
 
   static Future<int> deleteAll() async {
-    await _database!.delete(tableName);
+    return await _database!.delete(tableName);
   }
 
   static Future<List<Map<String, dynamic>>> query() async {
-    _database!.query(tableName); // getlist
+    return  _database!.query(tableName); // getlist
   }
 
   static Future<int> update(UserModel userModel) async {
-    _database!.update(tableName, userModel.toJson(), where: "id = ?", whereArgs: [userModel.id]);
+    return _database!.update(tableName, userModel.toJson(), where: "id = ?", whereArgs: [userModel.id]);
   }
 }
